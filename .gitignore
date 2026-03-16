@@ -33,5 +33,6 @@ Thumbs.db
 # Jupyter
 .ipynb_checkpoints/
 
-# Output
-output/
+# Output (keep PNGs for README, ignore large files)
+output/*.csv
+output/*.pkl

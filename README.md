@@ -37,6 +37,56 @@ MarketDNA answers *"What does this asset look like?"* — QuantPortal answers *"
 
 ---
 
+## Demo Output
+
+### Portfolio Equity Curve — Factor Top-5 vs Equal-Weight
+
+<p align="center">
+  <img src="output/equity_curve.png" width="85%" alt="Multi-Factor Top-5 vs Equal-Weight Benchmark">
+</p>
+
+> Multi-factor top-5 portfolio (blue) vs equal-weight benchmark (red). Factor selection identifies winners and avoids laggards, generating **+355% total return (+20.4% annualized, Sharpe 0.67)** over 2018–2026.
+
+### LightGBM Signal Combination — Feature Importance
+
+<p align="center">
+  <img src="output/feature_importance.png" width="65%" alt="LightGBM Feature Importance">
+</p>
+
+> The ML model learned that **vol_trend (31%)** and **quality (26%)** are the most predictive signals — not raw momentum. LightGBM-combined signal achieves **+500% total return (Sharpe 0.89)**, beating the equal-weight baseline.
+
+### Momentum Signal Heatmap
+
+<p align="center">
+  <img src="output/momentum_heatmap.png" width="85%" alt="Cross-Sectional Momentum Signal Heatmap">
+</p>
+
+> Cross-sectional momentum z-scores across 10 tech stocks over time. Green = high momentum (buy signal), Red = low momentum (avoid). The heatmap reveals regime shifts where momentum leadership rotates between stocks.
+
+### Portfolio Weight Allocation Over Time
+
+<p align="center">
+  <img src="output/weights_timeline.png" width="85%" alt="Portfolio Weight Allocation Timeline">
+</p>
+
+> Monthly rebalancing of top-5 holdings. The portfolio dynamically shifts between stocks based on combined factor scores, with position limits preventing over-concentration.
+
+---
+
+## Backtest Results Summary
+
+| Strategy | Annual Return | Sharpe | Max Drawdown | Turnover |
+|----------|:------------:|:------:|:------------:|:--------:|
+| Equal-Weight Benchmark | ~15% | ~0.50 | ~-55% | Low |
+| **Multi-Factor Top-5** | **+20.4%** | **0.67** | -60.4% | 45% |
+| **LightGBM ML Combo** | **+28.4%** | **0.89** | -55.9% | 96% |
+| Max Sharpe Optimal | +27.5% (expected) | 0.91 | — | — |
+| Min Variance | +17.9% (expected) | 0.69 | — | — |
+
+> Note: High drawdowns reflect concentrated tech exposure during COVID-2020 and 2022 bear market. Real deployment would include sector diversification and risk limits.
+
+---
+
 ## Quick Start
 
 ```bash
